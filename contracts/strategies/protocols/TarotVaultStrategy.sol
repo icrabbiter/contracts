@@ -90,7 +90,7 @@ contract TarotVaultStrategy is BaseStrategy {
         return new address[](0);
     }
 
-    function balance(address _token) public view override returns (uint256) {
+    function balance(address _token) public override returns (uint256) {
         return
             ISupplyVault(tokenVault[_token]).underlyingBalanceForAccount(address(this)) +
             IERC20(_token).balanceOf(address(this));

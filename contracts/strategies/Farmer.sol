@@ -94,7 +94,7 @@ contract Farmer is ExodiaAccessControl, Pausable {
         farmingData[_token].lastRebalance = block.timestamp;
     }
 
-    function _getRebalanceTarget(address _token) internal view returns (uint256, int256) {
+    function _getRebalanceTarget(address _token) internal returns (uint256, int256) {
         uint256 balance = _getTreasuryManager().balance(_token);
         uint256 allocated = allocator.allocatedBalance(_token);
         return _getTargetAllocation(_token, balance, allocated);
@@ -134,7 +134,7 @@ contract Farmer is ExodiaAccessControl, Pausable {
         }
     }
 
-    function getLimit(address _token) external view returns (uint256) {
+    function getLimit(address _token) external returns (uint256) {
         (uint256 limit, ) = _getRebalanceTarget(_token);
         return limit;
     }
